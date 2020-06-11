@@ -5,13 +5,14 @@ import { titleCase} from '../../utils/formatters'
 const MapTooltip = ({ properties }) => {
 
   const tooltipData = [
-    {label: "City", accessor: "city" }, 
-    {label: "Total staffing hours", accessor: "total_hprd" }, 
+    {label: "Staffing hours", accessor: "total_hprd" }, 
     {label: "Resident cases", accessor: "resident_cases" }, 
     {label: "Resident deaths", accessor: "resident_deaths" }, 
   ]
+  const {name, city} = properties
+  const cleanCity = titleCase(city)
   return (
-    <TooltipWrapper label={properties.name}>
+    <TooltipWrapper label={properties.name} subLabel={`${cleanCity}, PA`}>
       <FlexGrid>
         {tooltipData.map(row => {
           const value = properties[row.accessor]
@@ -41,7 +42,7 @@ const FlexGrid = ({ children }) => {
 const FlexRow = ({ label, value }) => {
   return (
     <div className="leaflet-map-tooltip__flex-grid-row">
-      <FlexCell>{label}</FlexCell>
+      <FlexCell>{label}:</FlexCell>
       <FlexCell>{value}</FlexCell>
     </div>
   );

@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TooltipWrapper = ({ label, children }) => (
+const TooltipWrapper = ({ label, subLabel, children }) => (
   <div className="leaflet-map-tooltip__container">
-    {label && <div className="leaflet-map-tooltip__label">{label}</div>}
+    <div className="leaflet-map-tooltip__label-container">
+      {label && <div className="leaflet-map-tooltip__label">{label}</div>}
+      {subLabel && <div className="leaflet-map-tooltip__sub-label">{subLabel}</div>}
+    </div>
     {children}
   </div>
 );
