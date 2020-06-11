@@ -28,9 +28,7 @@ class LeafletMap extends React.Component {
   }
 
   render() {
-    const { paCounties, nursingHomes } = this.props
-    console.log(paCounties);
-    console.log(nursingHomes);
+    const { geoData, iconData } = this.props
     return (
       <div className="leaflet-map__container-outer">
         <Map bounds={PA_BOUNDS} zoom={5} className="leaflet-map__container-inner">
@@ -65,10 +63,10 @@ class LeafletMap extends React.Component {
           </Pane>
           <GeoJSON
           // NOTE: geoJSON needs a unique key in order for it to update when data changes
-            data={paCounties}
+            data={geoData}
             style={this.geoJSONStylePlain}
           />
-          <IconLayer geoJsonData={nursingHomes} propertyID="provnum"/>
+          <IconLayer iconData={iconData} propertyID="provnum"/>
         </Map>
       </div>
     );
@@ -77,8 +75,8 @@ class LeafletMap extends React.Component {
 
 
 LeafletMap.propTypes = {
-  paCounties: PropTypes.objectOf(PropTypes.any).isRequired,
-  nursingHomes: PropTypes.objectOf(PropTypes.any).isRequired,
+  geoData: PropTypes.objectOf(PropTypes.any).isRequired,
+  iconData: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 
