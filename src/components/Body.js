@@ -6,7 +6,7 @@ class Body extends React.Component {
     const { nursingHomes, paCounties} = this.props.data
     return (
       <div className="body__container">
-        <LeafletMap paCounties={paCounties} />
+        <LeafletMap paCounties={paCounties} nursingHomes={nursingHomes}/>
       </div>
     );
   }

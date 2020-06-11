@@ -1,8 +1,9 @@
 import React from "react";
-import { Map, TileLayer, GeoJSON, Pane } from "react-leaflet";
+import { Map, TileLayer, GeoJSON, Pane, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import * as L from 'leaflet'
 import PropTypes from 'prop-types';
+import IconLayer from "./IconLayer";
 
 const PA_BOUNDS = [
   [42.505, -80],
@@ -27,8 +28,9 @@ class LeafletMap extends React.Component {
   }
 
   render() {
-    const { paCounties } = this.props
+    const { paCounties, nursingHomes } = this.props
     console.log(paCounties);
+    console.log(nursingHomes);
     return (
       <div className="leaflet-map__container-outer">
         <Map bounds={PA_BOUNDS} zoom={5} className="leaflet-map__container-inner">
@@ -66,6 +68,7 @@ class LeafletMap extends React.Component {
             data={paCounties}
             style={this.geoJSONStylePlain}
           />
+          <IconLayer geoJsonData={nursingHomes}/>
         </Map>
       </div>
     );
@@ -75,6 +78,7 @@ class LeafletMap extends React.Component {
 
 LeafletMap.propTypes = {
   paCounties: PropTypes.objectOf(PropTypes.any).isRequired,
+  nursingHomes: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 
