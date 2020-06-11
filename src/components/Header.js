@@ -10,7 +10,6 @@ const Header = ({headline, subtitle}) => (
     </div>
 )
 
-
 Header.propTypes = {
   headline: PropTypes.string,
   subtitle: PropTypes.string
