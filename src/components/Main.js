@@ -24,7 +24,10 @@ class Main extends React.Component {
     return (
       <div className="container__outer">
         <div className="container__inner">
-        <Header />
+        <Header 
+          headline="Nursing home staffing in Pa."
+          subtitle="Only XXX (XX%) of nursing homes in Pennsylvania have recommended staffing levels. Adjust the slider to see where the best and worst staffed homes are located."
+        />
         <Body data={this.props.data} /> 
         <Footer 
           byline="Author"
