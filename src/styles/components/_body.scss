@@ -1,0 +1,13 @@
+.body__container {
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+
+
+  @include tablet {
+    flex-direction: row;
+  }
+}
