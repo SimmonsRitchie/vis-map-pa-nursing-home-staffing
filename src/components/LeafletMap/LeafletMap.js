@@ -76,7 +76,7 @@ class LeafletMap extends React.Component {
 
 LeafletMap.propTypes = {
   geoData: PropTypes.objectOf(PropTypes.any).isRequired,
-  iconData: PropTypes.objectOf(PropTypes.any).isRequired,
+  iconData: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 

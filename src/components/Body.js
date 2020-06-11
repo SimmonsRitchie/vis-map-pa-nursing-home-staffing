@@ -4,35 +4,36 @@ import PropTypes from "prop-types";
 import RangeSlider from "./RangeSlider";
 import { max, min } from "d3-array";
 import createArrFromGeoJson from '../utils/createArrFromGeoJson'
+import simpleRound from '../utils/simpleRound'
 
 class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rangeValue: 2,
-      minRange: null,
-      maxRange: null,
+      rangeValue: 0,
+      minRange: 2,
+      maxRange: 5,
+      iconData: [],
       filteredData: []
     };
   }
 
   componentDidMount() {
     const { nursingHomes } = this.props.data;
-    const filteredData = nursingHomes.features.map(feature => feature)
-    const arrTotalHrs = createArrFromGeoJson(nursingHomes, "total_hprd");
-    console.log(arrTotalHrs)
-    const minRange = min(arrTotalHrs);
-    const maxRange = max(arrTotalHrs);
+    const iconData = nursingHomes.features.map(feature => feature)
     this.setState({
-      minRange,
-      maxRange,
-      filteredData
+      rangeValue: 2,
+      iconData,
+      filteredData: iconData
     });
   }
 
   handleChange = (value) => {
+    const { iconData } = this.state
+    const filteredData = iconData.filter( feature => feature.properties.total_hprd > value)
     this.setState({
       rangeValue: value,
+      filteredData
     });
   };
 

@@ -11,27 +11,23 @@ class RangeSlider extends Component {
     }
   }
 
-  handleChangeStart = () => {
-    console.log('Change event started')
-  };
-
-  handleChangeComplete = () => {
-    console.log('Change event completed')
-  };
-
   render () {
     const { minRange, maxRange, rangeValue, handleChange} = this.props
+    const horizontalLabels = {
+      2.7: 'Pa minimum',
+      4.1: 'recommended',
+    }
     return (
       <div className='range-slider__container'>
         <Slider
           min={minRange}
           max={maxRange}
           value={rangeValue}
-          onChangeStart={this.handleChangeStart}
+          labels={horizontalLabels}
+          format={value => value.toFixed(1)}
+          step={0.1}
           onChange={handleChange}
-          onChangeComplete={this.handleChangeComplete}
         />
-        <div className='value'>{rangeValue}</div>
       </div>
     )
   }
