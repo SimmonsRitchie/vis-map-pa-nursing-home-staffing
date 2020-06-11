@@ -68,7 +68,7 @@ class LeafletMap extends React.Component {
             data={paCounties}
             style={this.geoJSONStylePlain}
           />
-          <IconLayer geoJsonData={nursingHomes}/>
+          <IconLayer geoJsonData={nursingHomes} propertyID="provnum"/>
         </Map>
       </div>
     );

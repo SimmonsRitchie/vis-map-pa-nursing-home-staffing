@@ -2,7 +2,7 @@ import React from 'react';
 import {Pane, CircleMarker } from "react-leaflet";
 import PropTypes from 'prop-types'
 
-const IconLayer = ({geoJsonData}) => {
+const IconLayer = ({geoJsonData, propertyID}) => {
 
   return ( 
     <Pane name="icons" style={{ zIndex: 500 }}>
@@ -11,7 +11,7 @@ const IconLayer = ({geoJsonData}) => {
         const { coordinates } = geometry
         return (
           <CircleMarker 
-            key={properties.address}
+            key={properties[propertyID]}
             center={[coordinates[1], coordinates[0]]}
             radius={1.5}
           />)
@@ -22,6 +22,7 @@ const IconLayer = ({geoJsonData}) => {
 
 IconLayer.propTypes = {
   geoJsonData: PropTypes.objectOf(PropTypes.any).isRequired,
+  propertyID: PropTypes.string.isRequired
 }
 
 
