@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import SliderLabels from "./SliderLabels";
 import Axis from "./Axis";
 import * as d3 from 'd3'
+import Title from "./Title";
 
 class RangeSlider extends Component {
   render() {
@@ -17,6 +18,7 @@ class RangeSlider extends Component {
     // .range([0, 100000]);
     return (
       <div className="range-slider__container">
+        <Title />
         <Axis marginLeft={15} marginRight={15} type={"Top"} scale={scale}/>
         <Slider
           min={minRange}
