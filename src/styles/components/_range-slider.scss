@@ -1,7 +1,12 @@
 .range-slider__container {
   width: 100%;
   height: 100%;
-  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 .range-slider__title-container {
@@ -14,7 +19,6 @@
 
 // OVERRIDE RANGE SLIDER
 .rangeslider-horizontal {
-
   margin-top: 10px;
 
   .rangeslider__fill {
@@ -28,11 +32,9 @@
   }
 }
 
-
 // OVERRIDE D3
 .range-slider__axis {
   .domain {
     display: none;
   }
 }
-
