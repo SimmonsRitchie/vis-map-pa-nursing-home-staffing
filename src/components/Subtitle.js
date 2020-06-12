@@ -9,7 +9,7 @@ const Subtitle = ({ countNursingHomes, totalNursingHomes, rangeValue }) => {
       nursing homes (<H>{percent}%</H>) provide an average of at least <H>{cleanRangeValue}</H> hours of
       care per resident per day. Experts recommend at least 4.1 for safe care.
       Adjust the slider to see where the best staffed homes
-      are in your community.
+      are in your area.
     </span>
   );
 };
