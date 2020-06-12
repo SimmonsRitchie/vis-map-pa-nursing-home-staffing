@@ -8,8 +8,8 @@ const Subtitle = ({ countNursingHomes, totalNursingHomes, rangeValue }) => {
       In Pennsylvania, <H>{countNursingHomes}</H> of {totalNursingHomes}{" "}
       nursing homes (<H>{percent}%</H>) provide an average of at least <H>{cleanRangeValue}</H> hours of
       care per resident per day. Experts recommend at least 4.1 for safe care.
-      Adjust the slider to see where the best staffed homes
-      are in your area.
+      Adjust the slider to see where the best staffed homes are in your area, 
+      then hover or tap to see their coronavirus case statistics.
     </span>
   );
 };
