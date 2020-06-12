@@ -1,23 +1,21 @@
-import React, { createRef} from "react";
+import React, { createRef } from "react";
 import { Map, TileLayer, GeoJSON, Pane, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import * as L from 'leaflet'
-import PropTypes from 'prop-types';
+import * as L from "leaflet";
+import PropTypes from "prop-types";
 import Icons from "./Icons";
 
 const PA_BOUNDS = [
   [42.505, -80],
   [39, -75],
 ];
-const DARK = '#222222';
+const DARK = "#222222";
 
 class LeafletMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
     this.mapRef = createRef();
-
   }
 
   componentDidMount() {
@@ -25,12 +23,11 @@ class LeafletMap extends React.Component {
     const { geoData } = this.props;
     const geoJsonData = L.geoJSON(geoData);
     this.map.fitBounds(geoJsonData.getBounds());
-
   }
 
   geoJSONStylePlain() {
     return {
-      color: 'white',
+      color: "white",
       weight: 0.6,
       fillOpacity: 0.05,
       fillColor: DARK,
@@ -38,30 +35,35 @@ class LeafletMap extends React.Component {
   }
 
   render() {
-    const { geoData, iconData } = this.props
+    const { geoData, iconData } = this.props;
     return (
       <div className="leaflet-map__container-outer">
-        <Map bounds={PA_BOUNDS} zoom={5} className="leaflet-map__container-inner" ref={this.mapRef}>
+        <Map
+          bounds={PA_BOUNDS}
+          zoom={5}
+          className="leaflet-map__container-inner"
+          ref={this.mapRef}
+        >
           <TileLayer
-          url={`https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${
-            L.Browser.retina ? '@2x.png' : '.png'
-          }`}
-          attribution={
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          }
-          subdomains="abcd"
-          maxZoom={20}
-          minZoom={0}
+            url={`https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${
+              L.Browser.retina ? "@2x.png" : ".png"
+            }`}
+            attribution={
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            }
+            subdomains="abcd"
+            maxZoom={20}
+            minZoom={0}
           />
           <Pane
             // Note: We use panes and adjust zIndex so that labels appear above geoJSON but
             // beneath bubbles
             name="labels"
-            style={{ zIndex: 450, pointerEvents: 'none' }}
+            style={{ zIndex: 450, pointerEvents: "none" }}
           >
             <TileLayer
               url={`https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}${
-                L.Browser.retina ? '@2x.png' : '.png'
+                L.Browser.retina ? "@2x.png" : ".png"
               }`}
               attribution={
                 '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -72,22 +74,20 @@ class LeafletMap extends React.Component {
             />
           </Pane>
           <GeoJSON
-          // NOTE: geoJSON needs a unique key in order for it to update when data changes
+            // NOTE: geoJSON needs a unique key in order for it to update when data changes
             data={geoData}
             style={this.geoJSONStylePlain}
           />
-          <Icons iconData={iconData} propertyID="provnum"/>
+          <Icons iconData={iconData} propertyID="provnum" />
         </Map>
       </div>
     );
   }
 }
 
-
 LeafletMap.propTypes = {
   geoData: PropTypes.objectOf(PropTypes.any).isRequired,
   iconData: PropTypes.arrayOf(PropTypes.object).isRequired,
-}
-
+};
 
 export default LeafletMap;

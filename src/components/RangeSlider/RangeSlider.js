@@ -10,7 +10,7 @@ class RangeSlider extends Component {
   render() {
     const { minRange, maxRange, rangeValue, handleChange } = this.props;
     const labels = [
-      { text: "Required minimum", value: 2.7 },
+      { text: "Pa. required minimum", value: 2.7 },
       { text: "Recommended", value: 4.1 },
     ];
     const scale = d3.scaleLinear()
@@ -18,7 +18,7 @@ class RangeSlider extends Component {
     // .range([0, 100000]);
     return (
       <div className="range-slider__container">
-        <Title />
+        <Title title={"Total hours per resident day"}/>
         <Axis marginLeft={15} marginRight={15} type={"Top"} scale={scale}/>
         <Slider
           min={minRange}

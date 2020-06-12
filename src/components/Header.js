@@ -12,7 +12,7 @@ const Header = ({headline, subtitle}) => (
 
 Header.propTypes = {
   headline: PropTypes.string,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.object
 };
 
 export default Header

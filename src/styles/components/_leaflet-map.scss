@@ -1,6 +1,7 @@
 .leaflet-map__container-outer {
   height: 400px;
   width: 100%;
+  margin-bottom: $xs-size;
 
   @include mobile {
     height: 300px

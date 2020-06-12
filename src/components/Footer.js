@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = ({byline, outlet, outletUrl, source, footnote}) => {
+const Footer = ({byline, outlet, outletUrl, source, footnote, footnote2}) => {
   return (
     <div>
       <div className="footer__container">
@@ -8,6 +8,11 @@ const Footer = ({byline, outlet, outletUrl, source, footnote}) => {
           {footnote && <div className="footer__notes is-size-7">
             <i>
               {footnote}
+            </i>
+          </div>}
+          {footnote2 && <div className="footer__notes is-size-7">
+            <i>
+              {footnote2}
             </i>
           </div>}
           <div className="footer__byline-source is-size-7 has-text-grey">

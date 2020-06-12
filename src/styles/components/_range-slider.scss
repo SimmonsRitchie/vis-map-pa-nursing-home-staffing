@@ -3,11 +3,19 @@
   height: 100%;
 }
 
+.range-slider__title-container {
+  margin-bottom: $xs-size;
+}
+
+.range-slider__title-icon {
+  opacity: 0.4;
+}
+
 // OVERRIDE RANGE SLIDER
 .rangeslider-horizontal {
 
   margin-top: 10px;
-  
+
   .rangeslider__fill {
     background-color: $blue-sub1;
   }
