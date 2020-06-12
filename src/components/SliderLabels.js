@@ -28,4 +28,10 @@ const LabelBox = ({ leftPos, text }) => {
   </div>;
 };
 
+SliderLabels.propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.object).isRequired,
+  range: PropTypes.number.isRequired,
+  minRange: PropTypes.number.isRequired
+}
+
 export default SliderLabels;
