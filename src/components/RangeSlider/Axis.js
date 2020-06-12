@@ -1,7 +1,9 @@
 import React from "react";
-import * as d3 from "d3";
 import withResponsiveContainer from "./withResponsiveContainer"
 import PropTypes from 'prop-types';
+import * as d3Axis from 'd3-axis'
+import {select} from 'd3-selection'
+
 
 class Axis extends React.Component {
   constructor() {
@@ -21,7 +23,7 @@ class Axis extends React.Component {
     const { type, scale, width, marginLeft, marginRight } = this.props;
     const adjustedWidth = width - (marginLeft + marginRight);
     scale.range([0,adjustedWidth])
-    d3.select(this.gRef.current).call(d3[`axis${type}`](scale).tickValues([2, 2.5, 3, 3.5, 4, 4.5, 5]));
+    select(this.gRef.current).call(d3Axis[`axis${type}`](scale).tickValues([2, 2.5, 3, 3.5, 4, 4.5, 5]));
   }
 
   render() {
