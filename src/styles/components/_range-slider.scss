@@ -5,6 +5,9 @@
 
 // OVERRIDE RANGE SLIDER
 .rangeslider-horizontal {
+
+  margin-top: 10px;
+  
   .rangeslider__fill {
     background-color: $blue-sub1;
   }
@@ -15,3 +18,12 @@
     width: 70px;
   }
 }
+
+
+// OVERRIDE D3
+.range-slider__axis {
+  .domain {
+    display: none;
+  }
+}
+

@@ -1,12 +1,8 @@
 import React from "react";
 import * as d3 from "d3";
 import styled from "styled-components";
+import withResponsiveContainer from "./withResponsiveContainer"
 
-const Text = styled.text`
-    fill: black;
-    font-family: sans-serif;
-    font-size: 10px;
-`;
 
 class Axis extends React.Component {
   constructor() {
@@ -23,35 +19,23 @@ class Axis extends React.Component {
   }
 
   d3Render() {
-    const { type } = this.props;
-
-    d3.select(this.gRef.current).call(d3[`axis${type}`](this.props.scale));
-  }
-
-  get labelPos() {
-    const { type, scale } = this.props;
-
-    switch (type) {
-      case "Top":
-        return { x: scale.range()[1] + 20, y: 0 };
-      case "Right":
-        return { x: 20, y: 0 };
-      case "Bottom":
-        return { x: scale.range()[1] + 25, y: 25 };
-      case "Left":
-        return { x: -25, y: 0 };
-    }
+    const { type, scale, width, height, marginLeft, marginRight } = this.props;
+    const adjustedWidth = width - (marginLeft + marginRight);
+    scale.range([0,adjustedWidth])
+    d3.select(this.gRef.current).call(d3[`axis${type}`](scale).tickValues([2, 2.5, 3, 3.5, 4, 4.5, 5]));
   }
 
   render() {
-    const { x, y, label } = this.props;
+    const { marginLeft, label, height } = this.props;
 
     return (
-      <g ref={this.gRef} transform={`translate(${x}, ${y})`}>
-        <Text {...this.labelPos}>{label}</Text>
+      <g ref={this.gRef} transform={`translate(${marginLeft}, ${height})`} className="range-slider__axis">
       </g>
     );
   }
 }
 
-export default Axis;
+const ResponsiveAxis = withResponsiveContainer(Axis, { height: 20, margin: { top: 0, bottom: 0, right: 0, left: 0}})
+
+
+export default ResponsiveAxis;

@@ -26,8 +26,8 @@ class Main extends React.Component {
       <div className="container__outer">
         <div className="container__inner">
         <Header 
-          headline="Where are the best staffed homes?"
-          subtitle="Only about a quarter of Pennsylvania's 700 nursing homes meet staffing levels recommended by experts for safe care. Adjust the slider to see where the best staffed homes are located in your community."
+          headline="Where are Pa.'s best staffed nursing homes?"
+          subtitle="Only about a quarter of Pennsylvania's 700 nursing homes meet staffing levels recommended by experts for safe care. Adjust the slider and explore the map to see where the best staffed homes are in your community."
         />
         <Body data={data} /> 
         <Footer 

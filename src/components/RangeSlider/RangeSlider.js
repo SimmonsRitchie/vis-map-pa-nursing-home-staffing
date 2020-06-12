@@ -1,32 +1,38 @@
 import React, { Component } from "react";
 import Slider from "react-rangeslider";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import SliderLabels from "./SliderLabels";
+import Axis from "./Axis";
+import * as d3 from 'd3'
 
 class RangeSlider extends Component {
-
-  render () {
-    const { minRange, maxRange, rangeValue, handleChange} = this.props
+  render() {
+    const { minRange, maxRange, rangeValue, handleChange } = this.props;
     const labels = [
-     { text: 'Required minimum', value: 2.7},
-     { text: 'Recommended', value: 4.1},
-    ]
-
+      { text: "Required minimum", value: 2.7 },
+      { text: "Recommended", value: 4.1 },
+    ];
+    const scale = d3.scaleLinear()
+    .domain([minRange, maxRange])
+    // .range([0, 100000]);
     return (
-      <div className='range-slider__container'>
-        <Axis x={0} y={5} type={"Bottom"} label="x" scale={xScale} />
+      <div className="range-slider__container">
+        <Axis marginLeft={15} marginRight={15} type={"Top"} scale={scale}/>
         <Slider
           min={minRange}
           max={maxRange}
           value={rangeValue}
-          format={value => `${value.toFixed(1)} hprd`}
+          format={(value) => `${value.toFixed(1)} hprd`}
           step={0.1}
           onChange={handleChange}
         />
-        <SliderLabels labels={labels} range={maxRange - minRange} minRange={minRange}/>
-
+        <SliderLabels
+          labels={labels}
+          range={maxRange - minRange}
+          minRange={minRange}
+        />
       </div>
-    )
+    );
   }
 }
 
@@ -35,6 +41,6 @@ RangeSlider.propTypes = {
   minRange: PropTypes.number.isRequired,
   maxRange: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
-}
+};
 
-export default RangeSlider
+export default RangeSlider;
