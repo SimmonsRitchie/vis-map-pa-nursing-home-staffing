@@ -1,4 +1,17 @@
 .range-slider__container {
   width: 100%;
-  height: 100px;
+  height: 100%;
+}
+
+// OVERRIDE RANGE SLIDER
+.rangeslider-horizontal {
+  .rangeslider__fill {
+    background-color: $blue-sub1;
+  }
+}
+
+.rangeslider__handle {
+  .rangeslider__handle-tooltip {
+    width: 70px;
+  }
 }

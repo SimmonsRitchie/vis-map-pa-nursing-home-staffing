@@ -3,6 +3,7 @@
   padding: $xs-size;
   font-size: $size-7;
   line-height: 1.5;
+  width: 220px;
 }
 
 .leaflet-map-tooltip__label-container {
@@ -26,8 +27,6 @@
   width: 100%;
   flex-wrap: wrap;
   text-align: right;
-  min-width: 180px;
-  max-width: 230px;
   font-size: $size-7;
 
 }

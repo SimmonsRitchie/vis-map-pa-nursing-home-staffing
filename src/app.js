@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import Main from './components/Main'
 import Loader from './components/Loader'
 import { loadData } from './utils/load'
-import './styles/styles.scss';
+import 'react-rangeslider/lib/index.css'
 import "leaflet/dist/leaflet.css";
+import './styles/styles.scss';
 
 // RENDERAPP
 // Function below checks to see whether we have already rendered the page

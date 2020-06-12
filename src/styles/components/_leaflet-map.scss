@@ -1,6 +1,10 @@
 .leaflet-map__container-outer {
-  height: 300px;
+  height: 400px;
   width: 100%;
+
+  @include mobile {
+    height: 300px
+  }
 }
 
 .leaflet-map__container-inner {

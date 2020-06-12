@@ -8,7 +8,6 @@ const SliderLabels = ({labels, range, minRange}) => {
         {labels.map(label => {
           const {text, value} = label
           const leftPos = ((value - minRange) / range) * 100
-          console.log('leftPos',leftPos);
           return (
             <LabelBox key={text} text={text} leftPos={leftPos}/>
           )
@@ -18,21 +17,6 @@ const SliderLabels = ({labels, range, minRange}) => {
   );
 };
 
-// 
-
-
-const VertLine = ({leftPos}) => {
-  const style = {
-      borderLeft: "3px solid green",
-      height: "10px",
-      position: "absolute",
-      left:  `${leftPos}%`,
-      marginLeft: "-1px",
-      top: 0,
-  }
-  return ( <div style={style} />);
-}
- 
 
 
 const LabelBox = ({ leftPos, text }) => {

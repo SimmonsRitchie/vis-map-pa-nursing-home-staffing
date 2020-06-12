@@ -21,8 +21,10 @@ const MapTooltip = ({ properties }) => {
             cleanVal = value.toFixed(1)
           } else if (value === '*') {
             cleanVal = 'Less than 5'
-          } else if ( value === null) {
-            cleanVal = ""
+          } else if ( !value) {
+            cleanVal = 0
+          } else if ( value.toLowerCase() === 'no data') {
+            cleanVal = 0
           } else {
             cleanVal = titleCase(value)
           }

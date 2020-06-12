@@ -1,29 +1,32 @@
 .slider-labels__container {
-  z-index: 600;
   width: 100%;
-  height: 70px;
+  height: 30px;
   position: relative;
-  padding: 0 15px;
+  padding: 0 15px; // offset needed to be in line with rangeslider
 }
 
 .slider-labels__container-inner {
+  top: 0px;
   position: relative;
 }
 
 .slider-labels__box-container {
   position: absolute;
-  width: 200px;
+  width: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .slider-labels__box {
-  right: 100px;
-  max-width: 200px;
+  right: 1px;
+  // max-width: 200px;
+  width: 150px;
 	position: relative;
 	background: #fff;
-  padding: $xs-size;
+  padding: 3px 0 0 0;
+  font-size: $size-7;
+  white-space: nowrap;
 }
 .slider-labels__box:after, .slider-labels__box:before {
 	bottom: 100%;
@@ -36,15 +39,9 @@
 	pointer-events: none;
 }
 
-.slider-labels__box:after {
-	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: #88b7d5;
-	border-width: 10px;
-	margin-left: -10px;
-}
 .slider-labels__box:before {
 	border-color: rgba(194, 225, 245, 0);
-	border-bottom-color: #c2e1f5;
-	border-width: 16px;
-	margin-left: -16px;
+	border-bottom-color: #42A5B3;
+	border-width: 10px;
+	margin-left: -10px;
 }

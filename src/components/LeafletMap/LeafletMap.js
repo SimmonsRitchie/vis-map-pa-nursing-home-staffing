@@ -3,7 +3,7 @@ import { Map, TileLayer, GeoJSON, Pane, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import * as L from 'leaflet'
 import PropTypes from 'prop-types';
-import IconLayer from "./IconLayer";
+import Icons from "./Icons";
 
 const PA_BOUNDS = [
   [42.505, -80],
@@ -66,7 +66,7 @@ class LeafletMap extends React.Component {
             data={geoData}
             style={this.geoJSONStylePlain}
           />
-          <IconLayer iconData={iconData} propertyID="provnum"/>
+          <Icons iconData={iconData} propertyID="provnum"/>
         </Map>
       </div>
     );

@@ -2,8 +2,9 @@ import React from 'react';
 import {Pane, CircleMarker, Tooltip } from "react-leaflet";
 import PropTypes from 'prop-types'
 import MapTooltip from './MapTooltip';
+import {COLORS} from '../../utils/constants'
 
-const IconLayer = ({iconData, propertyID}) => {
+const Icons = ({iconData, propertyID}) => {
 
   return ( 
     <Pane name="icons" style={{ zIndex: 500 }}>
@@ -11,10 +12,11 @@ const IconLayer = ({iconData, propertyID}) => {
         const { properties, geometry } = datum;
         const { coordinates } = geometry
         return (
-          <CircleMarker 
+          <CircleMarker
             key={properties[propertyID]}
             center={[coordinates[1], coordinates[0]]}
-            radius={1.5}
+            radius={1}
+            color={COLORS.markers}
           >
             <Tooltip direction="auto" offset={[-8, -2]} opacity={1}>
               <MapTooltip properties={properties} />
@@ -27,10 +29,10 @@ const IconLayer = ({iconData, propertyID}) => {
   );
 }
 
-IconLayer.propTypes = {
+Icons.propTypes = {
   iconData: PropTypes.arrayOf(PropTypes.object).isRequired,
   propertyID: PropTypes.string.isRequired
 }
 
 
-export default IconLayer;
+export default Icons;
