@@ -14,7 +14,10 @@ const DARK = "#222222";
 class LeafletMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      zoomLevel: 5,
+      iconRadius: 2
+    };
     this.mapRef = createRef();
   }
 
@@ -34,14 +37,32 @@ class LeafletMap extends React.Component {
     };
   }
 
+  handleZoomEnd = () => {
+    const zoomLevel = this.map.getZoom();
+    let iconRadius
+    if (zoomLevel >= 10) {
+      iconRadius = 6
+    } else if (zoomLevel >= 8) {
+      iconRadius = 4
+    } else {
+      iconRadius = 2
+    }
+    this.setState({
+      zoomLevel,
+      iconRadius
+    });
+
+  }
+
   render() {
     const { geoData, iconData } = this.props;
+    const { iconRadius } = this.state
     return (
       <div className="leaflet-map__container-outer">
         <Map
           bounds={PA_BOUNDS}
-          zoom={5}
           className="leaflet-map__container-inner"
+          onzoomend={this.handleZoomEnd}
           ref={this.mapRef}
         >
           <TileLayer
@@ -78,7 +99,7 @@ class LeafletMap extends React.Component {
             data={geoData}
             style={this.geoJSONStylePlain}
           />
-          <Icons iconData={iconData} propertyID="provnum" />
+          <Icons iconData={iconData} propertyID="provnum" radius={iconRadius}/>
         </Map>
       </div>
     );
