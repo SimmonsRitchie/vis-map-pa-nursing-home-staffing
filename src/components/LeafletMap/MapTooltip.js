@@ -5,7 +5,7 @@ import { titleCase} from '../../utils/formatters'
 const MapTooltip = ({ properties }) => {
 
   const tooltipData = [
-    {label: "Staffing hours", accessor: "total_hprd" }, 
+    {label: "Total staffing", accessor: "total_hprd", formatter: val => `${val} hprd` }, 
     {label: "Resident cases", accessor: "resident_cases" }, 
     {label: "Resident deaths", accessor: "resident_deaths" }, 
   ]
@@ -15,7 +15,8 @@ const MapTooltip = ({ properties }) => {
     <TooltipWrapper label={properties.name} subLabel={`${cleanCity}, PA`}>
       <FlexGrid>
         {tooltipData.map(row => {
-          const value = properties[row.accessor]
+          const {label, accessor, formatter} = row
+          const value = properties[accessor]
           let cleanVal
           if (typeof value === 'number' && !Number.isSafeInteger(value)) {
             cleanVal = value.toFixed(1)
@@ -28,8 +29,12 @@ const MapTooltip = ({ properties }) => {
           } else {
             cleanVal = titleCase(value)
           }
+
+          if (formatter) {
+            cleanVal = formatter(cleanVal)
+          }
           return (
-            <FlexRow key={row.label} label={row.label} value={cleanVal}/>
+            <FlexRow key={label} label={label} value={cleanVal}/>
           )
         })}
       </FlexGrid>

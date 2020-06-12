@@ -2,9 +2,7 @@ import React from "react";
 import LeafletMap from "./LeafletMap";
 import PropTypes from "prop-types";
 import RangeSlider from "./RangeSlider";
-import { max, min } from "d3-array";
-import createArrFromGeoJson from '../utils/createArrFromGeoJson'
-import simpleRound from '../utils/simpleRound'
+import Summary from "./Summary";
 
 class Body extends React.Component {
   constructor(props) {
@@ -40,6 +38,7 @@ class Body extends React.Component {
   render() {
     const { rangeValue, minRange, maxRange, filteredData } = this.state;
     const { paCounties } = this.props.data;
+    const countNursingHomes = filteredData.length
     return (
       <div className="body__container">
         <RangeSlider
@@ -48,7 +47,9 @@ class Body extends React.Component {
           rangeValue={rangeValue}
           handleChange={this.handleChange}
         />
+        <Summary countNursingHomes={countNursingHomes} rangeValue={rangeValue}/>
         <LeafletMap geoData={paCounties} iconData={filteredData} />
+
       </div>
     );
   }

@@ -15,7 +15,7 @@ const Icons = ({iconData, propertyID}) => {
           <CircleMarker
             key={properties[propertyID]}
             center={[coordinates[1], coordinates[0]]}
-            radius={1}
+            radius={2}
             color={COLORS.markers}
           >
             <Tooltip direction="auto" offset={[-8, -2]} opacity={1}>

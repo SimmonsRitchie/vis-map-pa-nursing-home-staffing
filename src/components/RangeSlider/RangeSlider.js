@@ -14,6 +14,7 @@ class RangeSlider extends Component {
 
     return (
       <div className='range-slider__container'>
+        <Axis x={0} y={5} type={"Bottom"} label="x" scale={xScale} />
         <Slider
           min={minRange}
           max={maxRange}

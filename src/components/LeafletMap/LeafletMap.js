@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef} from "react";
 import { Map, TileLayer, GeoJSON, Pane, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import * as L from 'leaflet'
@@ -16,6 +16,16 @@ class LeafletMap extends React.Component {
     super(props);
     this.state = {
     };
+    this.mapRef = createRef();
+
+  }
+
+  componentDidMount() {
+    this.map = this.mapRef.current.leafletElement;
+    const { geoData } = this.props;
+    const geoJsonData = L.geoJSON(geoData);
+    this.map.fitBounds(geoJsonData.getBounds());
+
   }
 
   geoJSONStylePlain() {
@@ -31,7 +41,7 @@ class LeafletMap extends React.Component {
     const { geoData, iconData } = this.props
     return (
       <div className="leaflet-map__container-outer">
-        <Map bounds={PA_BOUNDS} zoom={5} className="leaflet-map__container-inner">
+        <Map bounds={PA_BOUNDS} zoom={5} className="leaflet-map__container-inner" ref={this.mapRef}>
           <TileLayer
           url={`https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${
             L.Browser.retina ? '@2x.png' : '.png'
